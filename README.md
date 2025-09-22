@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Tesla Website Replica
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a Tesla-inspired website built with React.
+It includes core pages, customization logic, and a simple authentication system.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+* **Home Page** with hero sections for Model S and Model 3.
+* **Cars Page** listing available models with images, price, and specs.
+* **Customize Page** where the user can:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  * Select battery, paint, wheels, and interior.
+  * See live price calculation.
+  * View live preview with readable text on both light and dark paint colors.
+* **Authentication** (Signup / Login) using in-memory state.
+* **Responsive Layout** suitable for desktop and mobile screens.
+* **Fixed Header** with navigation and user session handling.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Notes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Authentication is temporary and stored in memory using `btoa`. This is **not secure** and only for demonstration.
+* Car images are linked from Tesla’s public assets for demo purposes.
+* This project is purely educational and not affiliated with Tesla.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requirements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Node.js (v16 or later recommended)
+* npm (v8 or later) or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## How to Run
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Create a new React project (if not already done):
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npx create-react-app tesla-website
+cd tesla-website
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Replace the contents of `src/App.js` (or `src/App.jsx`) with the code from this repository. This repo has App.js
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Update `src/index.js` if using `App.jsx`:
 
-## Learn More
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import TeslaApp from './App'; // or App.jsx
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<TeslaApp />);
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Run the project:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm install
+npm start
+```
 
-### Code Splitting
+5. Open `http://localhost:3000` in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Repository Structure (suggested)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+/src
+  App.js            # main React component (single-file)
+  index.js
+  index.css
+  /assets            # (optional) local images
+  /components        # (optional) split Header, HomePage, CarsPage etc.
+  /data              # (optional) car data
+```
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Testing
 
-### Advanced Configuration
+* Open the app and navigate to **Home**.
+* Click **Custom Order** to open the customization page.
+* Switch between paint, battery, wheels, and interior options to see price and preview updates.
+* Try white and black paint to confirm text contrast works properly.
+* Use the signup/login page to test authentication flow.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Improvements (future work)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* Replace in-memory authentication with backend + database.
+* Use `react-router` for proper page navigation.
+* Store car data in a separate file.
+* Add unit tests.
+* Replace Tesla hotlink images with local images.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
